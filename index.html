@@ -3,67 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>📚 Student Login - My Coaching</title>
+    <title>📚 My Coaching Institute & Student Portal</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2=family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Poppins', sans-serif; background-color: #f8f9fa; }
+        body { font-family: 'Poppins', sans-serif; background-color: #f8f9fa; scroll-behavior: smooth; }
         .navbar-brand { font-weight: 700; }
+        .hero-section { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; padding: 80px 0; }
         .card { border: none; border-radius: 15px; }
+        .sticky-nav { position: sticky; top: 0; z-index: 1000; }
     </style>
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-nav">
         <div class="container">
             <a class="navbar-brand" href="#">📚 MY COACHING</a>
-            <span class="navbar-text text-white" id="nav-user-status">Guest Mode</span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#courses">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#admission-section">Admission Inquiry</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <span class="badge bg-warning text-dark fw-bold p-2" id="nav-user-status">Guest Mode</span>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
-    <div class="container my-5" style="max-width: 500px;">
-        
-        <div class="card shadow p-4" id="login-card">
-            <h3 class="fw-bold text-center mb-4 text-primary">Student Login</h3>
-            
-            <form id="mobile-form" onsubmit="sendOTP(event)">
-                <div class="mb-3">
-                    <label class="form-label fw-bold">Enter Mobile Number</label>
-                    <div class="input-group">
-                        <span class="input-group-text">+91</span>
-                        <input type="tel" class="form-control" id="mobile-input" placeholder="9876543210" maxlength="10" required pattern="[0-9]{10}">
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary w-100 fw-bold">Send OTP</button>
-            </form>
-
-            <form id="otp-form" onsubmit="verifyOTP(event)" class="d-none">
-                <div class="mb-3">
-                    <label class="form-label fw-bold text-success" id="otp-message">OTP sent successfully!</label>
-                    <input type="text" class="form-control text-center fw-bold fs-4" id="otp-input" placeholder="X X X X" maxlength="4" required>
-                    <small class="text-muted d-block mt-1 text-center">Hint: Enter 1234 to login</small>
-                </div>
-                <button type="submit" class="btn btn-success w-100 fw-bold mb-2">Verify & Login</button>
-                <button type="button" class="btn btn-link w-100 btn-sm text-secondary" onclick="showMobileForm()">Change Mobile Number</button>
-            </form>
+    <header class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-3">Bright Future Starts Here</h1>
+            <p class="lead mb-4">India's Premium Coaching for Academic Excellence & Competitive Exams.</p>
+            <a href="#login-section" class="btn btn-warning btn-lg fw-bold px-4 py-2">Student Portal Login</a>
         </div>
+    </header>
 
-        <div class="card shadow p-4 bg-light text-center d-none" id="dashboard-card">
-            <h3 class="fw-bold text-success mb-3">🎉 Welcome to Student Dashboard</h3>
-            <p class="lead">You have successfully logged in via OTP!</p>
+    <section id="login-section" class="py-5 bg-white">
+        <div class="container" style="max-width: 600px;">
             
-            <div class="border rounded p-3 bg-white text-start my-3">
-                <h5><strong>Your Batches:</strong></h5>
-                <ul>
-                    <li>Target JEE / NEET 2026</li>
-                    <li>Weekly Mock Test Series</li>
-                </ul>
+            <div class="card shadow p-4 border" id="login-card">
+                <h3 class="fw-bold text-center mb-4 text-primary">🔐 Student Login Portal</h3>
+                
+                <form id="mobile-form" onsubmit="sendOTP(event)">
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Enter Mobile Number</label>
+                        <div class="input-group">
+                            <span class="input-group-text">+91</span>
+                            <input type="tel" class="form-control" id="mobile-input" placeholder="9876543210" maxlength="10" required pattern="[0-9]{10}">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 fw-bold">Send OTP</button>
+                </form>
+
+                <form id="otp-form" onsubmit="verifyOTP(event)" class="d-none">
+                    <div class="mb-3">
+                        <label class="form-label fw-bold text-success" id="otp-message">OTP sent successfully!</label>
+                        <input type="text" class="form-control text-center fw-bold fs-4" id="otp-input" placeholder="X X X X" maxlength="4" required>
+                        <small class="text-muted d-block mt-1 text-center">Hint: Enter 1234 to login</small>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100 fw-bold mb-2">Verify & Login</button>
+                    <button type="button" class="btn btn-link w-100 btn-sm text-secondary" onclick="showMobileForm()">Change Mobile Number</button>
+                </form>
             </div>
 
-            <button class="btn btn-danger fw-bold mt-3" onclick="logout()">Logout</button>
-        </div>
+            <div class="card shadow p-4 bg-success-subtle border-success d-none" id="dashboard-card">
+                <div class="text-center">
+                    <h3 class="fw-bold text-success mb-2">🎉 Welcome Back, Student!</h3>
+                    <p class="text-muted">Your Premium Portal is now active.</p>
+                </div>
+                <hr>
+                <div class="p-3 bg-white rounded border mb-3">
+                    <h5 class="fw-bold text-primary mb-3">Your Enrolled Batches:</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            📖 Target JEE / NEET 2026 
+                            <span class="badge bg-primary rounded-pill">Active</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            📝 Weekly All India Mock Test Series
+                            <span class="badge bg-success rounded-pill">Live</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            💻 Doubt Solving Group (24x7)
+                            <span class="badge bg-secondary rounded-pill">Joined</span>
+                        </li>
+                    </ul>
+                </div>
+                <button class="btn btn-danger fw-bold w-100" onclick="logout()">Secure Logout</button>
+            </div>
 
-    </div>
+        </div>
+    </section>
+
+    <section id="courses" class="py-5 bg-light">
+        <div class="container text-center">
+            <h2 class="fw-bold mb-2">Our Featured Batches</h2>
+            <p class="text-muted mb-5">Choose the right path for your academic journey</p>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm border-top border-primary border-4">
+                        <div class="card-body p-4">
+                            <h5 class="card-title fw-bold text-primary">Foundation Batch</h5>
+                            <p class="card-text text-muted">Class 9th & 10th (Boards + NTSE + Olympiad preparation with core concept building).</p>
+                            <a href="#admission-section" class="btn btn-outline-primary btn-sm fw-bold">Enquire Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm border-top border-success border-4">
+                        <div class="card-body p-4">
+                            <h5 class="card-title fw-bold text-success">Target JEE / NEET</h5>
+                            <p class="card-text text-muted">Class 11th, 12th & Droppers. Intensive classroom coaching with India's expert faculties.</p>
+                            <a href="#admission-section" class="btn btn-outline-success btn-sm fw-bold">Enquire Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm border-top border-warning border-4">
+                        <div class="card-body p-4">
+                            <h5 class="card-title fw-bold text-warning">Competitive Exams</h5>
+                            <p class="card-text text-muted">Special customized batches for SSC, Banking, Railways, and State Government Exams.</p>
+                            <a href="#admission-section" class="btn btn-outline-warning btn-sm fw-bold">Enquire Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="admission-section" class="py-5 bg-white">
+        <div class="container" style="max-width: 600px;">
+            <h2 class="fw-bold text-center mb-2">New Admission Inquiry</h2>
+            <p class="text-muted text-center mb-4">Want a call back from our counselors? Fill the form below.</p>
+            <form class="p-4 border rounded shadow-sm bg-light" onsubmit="alert('Thank you! Our counselor will call you within 24 hours.'); return false;">
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Student Name</label>
+                    <input type="text" class="form-control" placeholder="Enter full name" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Phone Number</label>
+                    <input type="tel" class="form-control" placeholder="Enter contact number" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Select Interested Course</label>
+                    <select class="form-select">
+                        <option>Foundation Batch (Class 9-10)</option>
+                        <option>JEE / NEET Target Batch</option>
+                        <option>Government Exams Batch</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-dark w-100 fw-bold">Submit Details</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <p class="mb-0">&copy; 2026 My Coaching Institute. All Rights Reserved.</p>
+            <small class="text-muted">Built with Bootstrap & Vanilla JS</small>
+        </div>
+    </footer>
 
     <script>
         let savedMobile = "";
@@ -87,7 +191,8 @@
                 alert('Login Successful!');
                 document.getElementById('login-card').classList.add('d-none');
                 document.getElementById('dashboard-card').classList.remove('d-none');
-                document.getElementById('nav-user-status').innerText = "Welcome, Student!";
+                document.getElementById('nav-user-status').innerText = "🟢 Student Dashboard Active";
+                document.getElementById('nav-user-status').className = "badge bg-success text-white fw-bold p-2";
             } else {
                 alert('Wrong OTP! Please use 1234 for testing.');
             }
@@ -105,7 +210,10 @@
             document.getElementById('mobile-input').value = "";
             document.getElementById('otp-input').value = "";
             document.getElementById('nav-user-status').innerText = "Guest Mode";
+            document.getElementById('nav-user-status').className = "badge bg-warning text-dark fw-bold p-2";
+            alert('Logged out securely.');
         }
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
